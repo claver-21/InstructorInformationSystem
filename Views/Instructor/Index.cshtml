@@ -1,0 +1,97 @@
+﻿@model IEnumerable<InstructorInformationSystem.Models.Instructor>
+
+@{
+    ViewData["Title"] = "Instructor Information";
+}
+
+<div class="card">
+    <h2>Instructor Information Management</h2>
+
+    <p>Manage instructor information and records.</p>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <p style="color:green; font-weight:bold;">
+            @TempData["SuccessMessage"]
+        </p>
+    }
+
+    <p>
+        <a asp-controller="Instructor"
+           asp-action="Create"
+           style="display:inline-block; padding:12px 20px;
+            background:maroon; color:white;
+            text-decoration:none; border-radius:5px;">
+            + Add New Instructor
+        </a>
+    </p>
+
+    <div style="overflow-x:auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>Instructor ID</th>
+                    <th>Full Name</th>
+                    <th>Designation</th>
+                    <th>Majorship</th>
+                    <th>Email Address</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model.Any())
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.InstructorID</td>
+                            <td>@item.FullName</td>
+                            <td>@item.Designation</td>
+                            <td>@item.Majorship</td>
+                            <td>@item.Email</td>
+                            <td>
+                                <div style="display:flex; gap:6px;">
+
+                                    <a asp-controller="Instructor"
+                                       asp-action="Details"
+                                       asp-route-id="@item.Id"
+                                       class="instructor-action"
+                                       style="background:#2563eb;">
+                                        Details
+                                    </a>
+
+                                    <a asp-controller="Instructor"
+                                       asp-action="Edit"
+                                       asp-route-id="@item.Id"
+                                       class="instructor-action"
+                                       style="background:maroon;">
+                                        Edit
+                                    </a>
+
+                                    <a asp-controller="Instructor"
+                                       asp-action="Delete"
+                                       asp-route-id="@item.Id"
+                                       class="instructor-action"
+                                       style="background:#dc3545;">
+                                        Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6"
+                            style="text-align:center; padding:25px;">
+                            No instructor records found.
+                            Click Add New Instructor to begin.
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model InstructorInformationSystem.Models.Course
+
+@{
+    ViewData["Title"] = "Edit Course";
+}
+
+<div class="card">
+    <h2>Edit Course</h2>
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div>
+            <label asp-for="CourseCode"></label>
+            <input asp-for="CourseCode" />
+            <span asp-validation-for="CourseCode" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="CourseName"></label>
+            <input asp-for="CourseName" />
+            <span asp-validation-for="CourseName" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Units"></label>
+            <input asp-for="Units" type="number" />
+            <span asp-validation-for="Units" class="text-danger"></span>
+        </div>
+
+        <div>
+            <label asp-for="Schedule"></label>
+            <input asp-for="Schedule" />
+            <span asp-validation-for="Schedule" class="text-danger"></span>
+        </div>
+
+        <button type="submit" style="margin-top: 15px;">Update Course</button>
+    </form>
+
+    <div style="margin-top: 15px;">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

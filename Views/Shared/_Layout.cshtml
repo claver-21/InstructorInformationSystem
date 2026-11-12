@@ -1,0 +1,127 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] | Instructor Information System</title>
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+</head>
+<body>
+
+    <header class="site-header">
+        <nav class="site-nav">
+
+            <a class="site-brand"
+               asp-controller="Home"
+               asp-action="Index">
+
+                <span class="brand-symbol">IIS</span>
+
+                <span class="brand-text">
+                    <strong>Instructor Information</strong>
+                    <small>Management System</small>
+                </span>
+            </a>
+
+            <div class="nav-links">
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Account"
+                       asp-action="Dashboard">
+                        Dashboard
+                    </a>
+
+                    <a asp-controller="Course"
+                       asp-action="Index">
+                        Courses
+                    </a>
+
+                    <a asp-controller="Instructor"
+                       asp-action="Index">
+                        Instructors
+                    </a>
+                }
+                else
+                {
+                    <a asp-controller="Home"
+                       asp-action="Index">
+                        Home
+                    </a>
+                }
+            </div>
+
+            <div class="nav-account">
+
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <span class="nav-user">
+                        <span class="user-avatar">
+                            @(User.Identity.Name?
+                                .Substring(0, 1)
+                                .ToUpperInvariant() ?? "I")
+                        </span>
+
+                        <span class="user-name">
+                            @User.Identity.Name
+                        </span>
+                    </span>
+
+                    <form asp-controller="Account"
+                          asp-action="Logout"
+                          method="post"
+                          class="nav-logout-form">
+
+                        @Html.AntiForgeryToken()
+
+                        <button type="submit"
+                                class="nav-logout-btn">
+                            Logout
+                        </button>
+                    </form>
+                }
+                else
+                {
+                    <a asp-controller="Account"
+                       asp-action="Login"
+                       class="nav-login">
+                        Login
+                    </a>
+
+                    <a asp-controller="Account"
+                       asp-action="Register"
+                       class="nav-register">
+                        Register
+                    </a>
+                }
+
+            </div>
+        </nav>
+    </header>
+
+    <main class="@(ViewData["WideLayout"] is true
+        ? "dashboard-main"
+        : "site-main")">
+
+        @RenderBody()
+
+    </main>
+
+    <footer class="site-footer">
+        <span>© 2026 Instructor Information System</span>
+        <span>Organized records. Better management.</span>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

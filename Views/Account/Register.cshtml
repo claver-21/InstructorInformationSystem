@@ -1,0 +1,182 @@
+﻿
+@model InstructorInformationSystem.Models.Instructor
+
+@{
+    ViewData["Title"] = "Instructor Registration";
+}
+
+<div class="card">
+
+    <h2>Instructor Registration</h2>
+
+    <p style="text-align:center; color:#666;">
+        Please complete your instructor information.
+    </p>
+
+    <form id="registerForm"
+          asp-controller="Account"
+          asp-action="Register"
+          method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger"></div>
+
+        <!-- INSTRUCTOR ID -->
+        <div>
+            <label asp-for="InstructorID"></label>
+            <input asp-for="InstructorID"
+                   placeholder="Enter instructor ID" />
+            <span asp-validation-for="InstructorID"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- FIRST NAME -->
+        <div>
+            <label asp-for="FirstName"></label>
+            <input asp-for="FirstName"
+                   placeholder="Enter first name" />
+            <span asp-validation-for="FirstName"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- LAST NAME -->
+        <div>
+            <label asp-for="LastName"></label>
+            <input asp-for="LastName"
+                   placeholder="Enter last name" />
+            <span asp-validation-for="LastName"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- AGE -->
+        <div>
+            <label asp-for="Age"></label>
+            <input asp-for="Age"
+                   type="number"
+                   min="18"
+                   max="100"
+                   placeholder="Enter age" />
+            <span asp-validation-for="Age"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- ADDRESS -->
+        <div>
+            <label asp-for="Address"></label>
+            <textarea asp-for="Address"
+                      rows="3"
+                      placeholder="Enter complete address"></textarea>
+            <span asp-validation-for="Address"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- DESIGNATION -->
+        <div>
+            <label asp-for="Designation"></label>
+            <input asp-for="Designation"
+                   placeholder="e.g. Instructor I" />
+            <span asp-validation-for="Designation"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- GENDER -->
+        <div>
+            <label asp-for="Gender"></label>
+            <select asp-for="Gender"
+                    style="width:100%; padding:12px;
+                           border:1px solid #ccc;
+                           border-radius:4px;">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Non-binary">Non-binary</option>
+                <option value="Prefer not to say">
+                    Prefer not to say
+                </option>
+            </select>
+            <span asp-validation-for="Gender"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- CONTACT NUMBER -->
+        <div>
+            <label asp-for="ContactNumber"></label>
+            <input asp-for="ContactNumber"
+                   type="tel"
+                   maxlength="11"
+                   placeholder="09XXXXXXXXX" />
+            <span asp-validation-for="ContactNumber"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- MAJORSHIP -->
+        <div>
+            <label asp-for="Majorship"></label>
+            <input asp-for="Majorship"
+                   placeholder="e.g. Information Technology" />
+            <span asp-validation-for="Majorship"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- BACHELOR DEGREE -->
+        <div>
+            <label asp-for="BachelorDegree"></label>
+            <input asp-for="BachelorDegree"
+                   placeholder="e.g. BS Information Technology" />
+            <span asp-validation-for="BachelorDegree"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- EMAIL ADDRESS -->
+        <div>
+            <label asp-for="Email"></label>
+            <input asp-for="Email"
+                   type="email"
+                   placeholder="Enter email address" />
+            <span asp-validation-for="Email"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- PASSWORD -->
+        <div>
+            <label asp-for="Password"></label>
+            <input asp-for="Password"
+                   type="password"
+                   id="Password"
+                   placeholder="Enter password" />
+            <span asp-validation-for="Password"
+                  class="text-danger"></span>
+        </div>
+
+        <!-- CONFIRM PASSWORD -->
+        <div>
+            <label asp-for="ConfirmPassword"></label>
+            <input asp-for="ConfirmPassword"
+                   type="password"
+                   id="ConfirmPassword"
+                   placeholder="Confirm password" />
+            <span asp-validation-for="ConfirmPassword"
+                  class="text-danger"></span>
+        </div>
+
+        <button type="submit">Register</button>
+
+        <p style="text-align:center; margin-top:20px;">
+            Already have an account?
+            <a asp-controller="Account"
+               asp-action="Login"
+               style="color:maroon; font-weight:bold;">
+                Login here
+            </a>
+        </p>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+}

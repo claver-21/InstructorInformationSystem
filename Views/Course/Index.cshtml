@@ -1,0 +1,124 @@
+﻿@model IEnumerable<InstructorInformationSystem.Models.Course>
+
+@{
+    ViewData["Title"] = "Course Management";
+}
+
+<div class="card">
+
+    <h2>Assigned Courses</h2>
+
+    <p>
+        <a asp-controller="Course"
+           asp-action="Create"
+           style="padding:10px 18px;
+            background:maroon;
+            color:white;
+            text-decoration:none;
+            border-radius:4px;
+            display:inline-block;
+            font-weight:bold;">
+            Add New Course
+        </a>
+    </p>
+
+    <table class="table"
+           style="width:100%;
+        margin-top:25px;
+        border-collapse:collapse;">
+
+        <thead>
+            <tr style="border-bottom:2px solid #ccc;
+                text-align:left;">
+
+                <th style="padding:12px;">Course Code</th>
+
+                <th style="padding:12px;">Course Name</th>
+
+                <th style="padding:12px;">Units</th>
+
+                <th style="padding:12px;">Schedule</th>
+
+                <th style="padding:12px; text-align:center;">
+                    Actions
+                </th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                <tr style="border-bottom:1px solid #eee;">
+
+                    <td style="padding:14px 12px;">
+                        @item.CourseCode
+                    </td>
+
+                    <td style="padding:14px 12px;">
+                        @item.CourseName
+                    </td>
+
+                    <td style="padding:14px 12px;">
+                        @item.Units
+                    </td>
+
+                    <td style="padding:14px 12px;">
+                        @item.Schedule
+                    </td>
+
+                    <td style="padding:14px 12px; text-align:center;">
+
+                        <div style="display:flex;
+                            gap:8px;
+                            justify-content:center;">
+
+                            <!-- DETAILS BUTTON -->
+                            <a asp-controller="Course"
+                               asp-action="Details"
+                               asp-route-id="@item.Id"
+                               style="background:#2563eb;
+                                color:white;
+                                padding:8px 12px;
+                                border-radius:4px;
+                                text-decoration:none;">
+                                Details
+                            </a>
+
+                            <!-- EDIT BUTTON -->
+                            <a asp-controller="Course"
+                               asp-action="Edit"
+                               asp-route-id="@item.Id"
+                               style="background:maroon;
+                                color:white;
+                                padding:8px 12px;
+                                border-radius:4px;
+                                text-decoration:none;">
+                                Edit
+                            </a>
+
+                            <!-- DELETE BUTTON -->
+                            <a asp-controller="Course"
+                               asp-action="Delete"
+                               asp-route-id="@item.Id"
+                               style="background:#dc3545;
+                                color:white;
+                                padding:8px 12px;
+                                border-radius:4px;
+                                text-decoration:none;">
+                                Delete
+                            </a>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>

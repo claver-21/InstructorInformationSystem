@@ -1,0 +1,46 @@
+﻿
+@model InstructorInformationSystem.Models.Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="card">
+    <h2>Course Details</h2>
+
+    <p>View the complete information of the selected course.</p>
+
+    <table>
+        <tr>
+            <th>Course Code</th>
+            <td>@Html.DisplayFor(model => model.CourseCode)</td>
+        </tr>
+        <tr>
+            <th>Course Name</th>
+            <td>@Html.DisplayFor(model => model.CourseName)</td>
+        </tr>
+        <tr>
+            <th>Units</th>
+            <td>@Html.DisplayFor(model => model.Units)</td>
+        </tr>
+        <tr>
+            <th>Schedule</th>
+            <td>@Html.DisplayFor(model => model.Schedule)</td>
+        </tr>
+    </table>
+
+    <div style="margin-top:25px; display:flex; gap:10px;">
+        <a asp-action="Edit"
+           asp-route-id="@Model.Id"
+           style="background:maroon; color:white; padding:10px 20px;
+                  border-radius:4px; text-decoration:none;">
+            Edit
+        </a>
+
+        <a asp-action="Index"
+           style="background:#555; color:white; padding:10px 20px;
+                  border-radius:4px; text-decoration:none;">
+            Back to List
+        </a>
+    </div>
+</div>

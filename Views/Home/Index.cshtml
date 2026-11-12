@@ -1,0 +1,357 @@
+﻿
+@{
+    ViewData["Title"] = "Home";
+    ViewData["WideLayout"] = true;
+}
+
+<link rel="stylesheet"
+      href="~/css/home.css"
+      asp-append-version="true" />
+
+<div class="home-page">
+
+    <!-- MAIN INTRODUCTION -->
+    <section class="home-hero">
+
+        <div class="home-wrap home-hero-grid">
+
+            <div class="home-introduction">
+
+                <span class="home-eyebrow">
+                    ACADEMIC MANAGEMENT PORTAL
+                </span>
+
+                <h1>
+                    Instructor Information
+                    Management System
+                </h1>
+
+                <p class="home-description">
+                    An organized platform for maintaining
+                    instructor profiles, academic information,
+                    and course records in one place.
+                </p>
+
+                <p class="home-description-secondary">
+                    Access the tools you need to manage
+                    important records, review assigned
+                    courses, and keep academic information
+                    up to date.
+                </p>
+
+                <div class="home-hero-buttons">
+
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Dashboard"
+                           class="home-button home-button-primary">
+                            Open Dashboard
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Account"
+                           asp-action="Login"
+                           class="home-button home-button-primary">
+                            Sign In
+                            <span aria-hidden="true">→</span>
+                        </a>
+
+                        <a asp-controller="Account"
+                           asp-action="Register"
+                           class="home-button home-button-outline">
+                            Register an Account
+                        </a>
+                    }
+
+                </div>
+
+                <div class="home-access-note">
+                    Instructor and course information,
+                    available through your account.
+                </div>
+
+            </div>
+
+            <!-- SYSTEM MODULE PREVIEW -->
+            <div class="home-system-panel">
+
+                <div class="home-panel-top">
+
+                    <div>
+                        <span class="home-panel-label">
+                            SYSTEM OVERVIEW
+                        </span>
+
+                        <h2>
+                            Management Modules
+                        </h2>
+                    </div>
+
+                    <span class="home-panel-status">
+                        Portal
+                    </span>
+
+                </div>
+
+                <div class="home-module">
+
+                    <div class="home-module-number">
+                        01
+                    </div>
+
+                    <div class="home-module-content">
+                        <h3>Instructor Information</h3>
+                        <p>
+                            Personal details, designation,
+                            educational background, and
+                            contact information.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="home-module">
+
+                    <div class="home-module-number">
+                        02
+                    </div>
+
+                    <div class="home-module-content">
+                        <h3>Course Management</h3>
+                        <p>
+                            Course codes, names, units,
+                            and teaching schedules.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="home-module">
+
+                    <div class="home-module-number">
+                        03
+                    </div>
+
+                    <div class="home-module-content">
+                        <h3>Dashboard Overview</h3>
+                        <p>
+                            Academic record summaries
+                            and direct access to management
+                            functions.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="home-panel-bottom">
+                    <span>Instructor Information System</span>
+                    <span>Academic Records</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FEATURES -->
+    <section class="home-features">
+
+        <div class="home-wrap">
+
+            <div class="home-section-header">
+
+                <div>
+                    <span class="home-section-eyebrow">
+                        WHAT THE SYSTEM OFFERS
+                    </span>
+
+                    <h2>Core System Features</h2>
+
+                    <p>
+                        Essential tools for organizing
+                        instructor and course information.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="home-feature-grid">
+
+                <article class="home-feature-card">
+
+                    <div class="home-feature-heading">
+                        <span class="home-feature-index">01</span>
+                        <h3>Instructor Records</h3>
+                    </div>
+
+                    <p>
+                        Store and maintain instructor
+                        identification details, names,
+                        contact information, academic
+                        qualifications, and designations.
+                    </p>
+
+                    <div class="home-feature-footer">
+                        Information Management
+                    </div>
+
+                </article>
+
+                <article class="home-feature-card">
+
+                    <div class="home-feature-heading">
+                        <span class="home-feature-index">02</span>
+                        <h3>Course Records</h3>
+                    </div>
+
+                    <p>
+                        Create, review, and update
+                        course information, including
+                        subject codes, course names,
+                        credit units, and schedules.
+                    </p>
+
+                    <div class="home-feature-footer">
+                        Course Management
+                    </div>
+
+                </article>
+
+                <article class="home-feature-card">
+
+                    <div class="home-feature-heading">
+                        <span class="home-feature-index">03</span>
+                        <h3>Account Access</h3>
+                    </div>
+
+                    <p>
+                        Register an instructor account
+                        and sign in using your email
+                        address or Instructor ID
+                        and password.
+                    </p>
+
+                    <div class="home-feature-footer">
+                        Account Management
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- GETTING STARTED -->
+    <section class="home-getting-started">
+
+        <div class="home-wrap home-start-grid">
+
+            <div class="home-start-heading">
+
+                <span class="home-section-eyebrow">
+                    GETTING STARTED
+                </span>
+
+                <h2>How to Access the System</h2>
+
+                <p>
+                    Follow these steps to begin using
+                    the Instructor Information System.
+                </p>
+
+            </div>
+
+            <div class="home-steps">
+
+                <div class="home-step">
+
+                    <span class="home-step-number">01</span>
+
+                    <div>
+                        <h3>Create an Account</h3>
+                        <p>
+                            Complete the instructor registration
+                            form with the required information.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="home-step">
+
+                    <span class="home-step-number">02</span>
+
+                    <div>
+                        <h3>Sign In</h3>
+                        <p>
+                            Enter your registered email
+                            address or Instructor ID
+                            and password.
+                        </p>
+                    </div>
+
+                </div>
+
+                <div class="home-step">
+
+                    <span class="home-step-number">03</span>
+
+                    <div>
+                        <h3>Access Your Dashboard</h3>
+                        <p>
+                            Open the available tools for
+                            viewing and managing academic
+                            records.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- BOTTOM ACCESS SECTION -->
+    <section class="home-access-section">
+
+        <div class="home-wrap home-access-content">
+
+            <div>
+                <h2>Access your academic workspace</h2>
+
+                <p>
+                    Sign in to manage instructor information
+                    and course records.
+                </p>
+            </div>
+
+            @if (User.Identity?.IsAuthenticated == true)
+            {
+                <a asp-controller="Account"
+                   asp-action="Dashboard"
+                   class="home-button home-button-primary">
+                    Go to Dashboard →
+                </a>
+            }
+            else
+            {
+                <a asp-controller="Account"
+                   asp-action="Login"
+                   class="home-button home-button-primary">
+                    Sign In to Continue →
+                </a>
+            }
+
+        </div>
+
+    </section>
+
+</div>

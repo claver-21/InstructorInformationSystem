@@ -1,0 +1,67 @@
+﻿@model InstructorInformationSystem.Models.Instructor
+
+@{
+    ViewData["Title"] = "Delete Instructor";
+}
+
+<div class="card">
+
+    <h2>Delete Instructor</h2>
+
+    <p style="color:#dc3545; font-weight:bold;">
+        Are you sure you want to delete this instructor?
+    </p>
+
+    <p>
+        This action will permanently remove the selected
+        instructor record from the database.
+    </p>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Instructor ID</th>
+                <td>@Model.InstructorID</td>
+            </tr>
+            <tr>
+                <th>Full Name</th>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr>
+                <th>Designation</th>
+                <td>@Model.Designation</td>
+            </tr>
+            <tr>
+                <th>Majorship</th>
+                <td>@Model.Majorship</td>
+            </tr>
+            <tr>
+                <th>Email Address</th>
+                <td>@Model.Email</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <form asp-controller="Instructor"
+          asp-action="Delete"
+          asp-route-id="@Model.Id"
+          method="post"
+          style="margin-top:25px;">
+
+        @Html.AntiForgeryToken()
+
+        <button type="submit"
+                style="background:#dc3545;">
+            Confirm Delete
+        </button>
+
+    </form>
+
+    <div style="margin-top:20px;">
+        <a asp-controller="Instructor"
+           asp-action="Index">
+            Cancel and Back to List
+        </a>
+    </div>
+
+</div>
